@@ -1,0 +1,725 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>| Developer Portfolio</title>
+
+    <!-- Bootstrap -->
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+
+    <!-- Bootstrap Icons -->
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css"
+    />
+
+    <!-- Google Fonts -->
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+
+    <style>
+      :root {
+        --bg: #080d18;
+        --card: #111a2b;
+        --primary: #6c63ff;
+        --secondary: #00d4ff;
+        --white: #ffffff;
+        --muted: #a6b0c3;
+      }
+
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        scroll-behavior: smooth;
+      }
+
+      body {
+        font-family: "Poppins", sans-serif;
+        background: var(--bg);
+        color: var(--white);
+      }
+
+      a {
+        text-decoration: none;
+      }
+
+      .navbar {
+        background: rgba(8, 13, 24, 0.95);
+        padding: 18px 0;
+        border-bottom: 1px solid #202b40;
+      }
+
+      .navbar-brand {
+        font-size: 25px;
+        font-weight: 800;
+        color: white !important;
+      }
+
+      .navbar-brand span {
+        color: var(--secondary);
+      }
+
+      .nav-link {
+        color: #ddd !important;
+        margin-left: 18px;
+        font-size: 14px;
+        transition: 0.3s;
+      }
+
+      .nav-link:hover {
+        color: var(--secondary) !important;
+      }
+
+      .navbar-toggler {
+        background: white;
+      }
+
+      .hero {
+        min-height: 95vh;
+        display: flex;
+        align-items: center;
+        padding: 110px 0 70px;
+      }
+
+      .hero h1 {
+        font-size: clamp(38px, 6vw, 65px);
+        font-weight: 800;
+        line-height: 1.2;
+      }
+
+      .gradient-text {
+        background: linear-gradient(90deg, #6c63ff, #00d4ff);
+        -webkit-background-clip: text;
+        color: transparent;
+      }
+
+      .hero p {
+        color: var(--muted);
+        max-width: 550px;
+        line-height: 1.9;
+        margin: 22px 0;
+      }
+
+      .btn-main {
+        background: linear-gradient(90deg, #6c63ff, #00bce8);
+        color: white;
+        padding: 13px 27px;
+        border-radius: 8px;
+        font-weight: 600;
+        border: none;
+        transition: 0.3s;
+      }
+
+      .btn-main:hover {
+        transform: translateY(-4px);
+        color: white;
+        box-shadow: 0 8px 25px #6c63ff55;
+      }
+
+      .btn-outline {
+        border: 1px solid var(--secondary);
+        color: var(--secondary);
+        padding: 12px 27px;
+        border-radius: 8px;
+        display: inline-block;
+        transition: 0.3s;
+      }
+
+      .btn-outline:hover {
+        background: var(--secondary);
+        color: #080d18;
+      }
+
+      .profile-circle {
+        width: 300px;
+        height: 300px;
+        max-width: 100%;
+        border-radius: 50%;
+        background: linear-gradient(135deg, #6c63ff, #00d4ff);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin: auto;
+        box-shadow: 0 0 70px #6c63ff55;
+      }
+
+      .profile-circle h2 {
+        font-size: 100px;
+        font-weight: 800;
+        color: white;
+      }
+
+      .social-links a {
+        color: white;
+        font-size: 22px;
+        margin-right: 20px;
+        transition: 0.3s;
+      }
+
+      .social-links a:hover {
+        color: var(--secondary);
+      }
+
+      section {
+        padding: 90px 0;
+      }
+
+      .section-title {
+        text-align: center;
+        margin-bottom: 55px;
+      }
+
+      .section-title h2 {
+        font-size: 38px;
+        font-weight: 700;
+      }
+
+      .section-title p {
+        color: var(--muted);
+      }
+
+      .section-title span {
+        color: var(--secondary);
+      }
+
+      .about-box,
+      .skill-card,
+      .project-card,
+      .contact-box {
+        background: var(--card);
+        border: 1px solid #26334b;
+        border-radius: 15px;
+        padding: 28px;
+        height: 100%;
+        transition: 0.3s;
+      }
+
+      .skill-card:hover,
+      .project-card:hover {
+        transform: translateY(-8px);
+        border-color: var(--secondary);
+      }
+
+      .skill-card i {
+        font-size: 38px;
+        color: var(--secondary);
+      }
+
+      .skill-card h5 {
+        margin-top: 18px;
+        font-weight: 600;
+      }
+
+      .skill-card p,
+      .about-box p {
+        color: var(--muted);
+        font-size: 14px;
+        line-height: 1.8;
+      }
+
+      .progress {
+        height: 8px;
+        background: #26334b;
+        margin-top: 12px;
+      }
+
+      .progress-bar {
+        background: linear-gradient(90deg, #6c63ff, #00d4ff);
+      }
+
+      .project-card img {
+        width: 100%;
+        height: 180px;
+        object-fit: cover;
+        border-radius: 10px;
+        margin-bottom: 20px;
+      }
+
+      .project-card h5 {
+        font-weight: 600;
+      }
+
+      .project-card p {
+        color: var(--muted);
+        font-size: 14px;
+      }
+
+      .tag {
+        display: inline-block;
+        background: #202b43;
+        color: var(--secondary);
+        padding: 5px 12px;
+        border-radius: 20px;
+        font-size: 11px;
+        margin: 3px;
+      }
+
+      .contact-info {
+        display: flex;
+        gap: 15px;
+        align-items: center;
+        margin: 25px 0;
+      }
+
+      .contact-info i {
+        font-size: 25px;
+        color: var(--secondary);
+      }
+
+      .contact-info p {
+        color: var(--muted);
+        margin: 0;
+        font-size: 13px;
+      }
+
+      .contact-info h6 {
+        margin: 0 0 4px;
+      }
+
+      .form-control {
+        background: #080f1e;
+        border: 1px solid #34415b;
+        color: white;
+        padding: 13px;
+        margin-bottom: 17px;
+      }
+
+      .form-control:focus {
+        background: #080f1e;
+        color: white;
+        border-color: var(--secondary);
+        box-shadow: none;
+      }
+
+      .form-control::placeholder {
+        color: #8995a9;
+      }
+
+      footer {
+        background: #060a13;
+        padding: 25px 0;
+        text-align: center;
+        color: var(--muted);
+        border-top: 1px solid #26334b;
+      }
+      img{
+        border-radius: 50%;
+      }
+
+      @media (max-width: 768px) {
+        .hero {
+          text-align: center;
+        }
+        .hero p {
+          margin-left: auto;
+          margin-right: auto;
+        }
+        .profile-circle {
+          width: 220px;
+          height: 220px;
+          margin-top: 50px;
+        }
+        .profile-circle h2 {
+          font-size: 75px;
+        }
+        .social-links {
+          margin-top: 25px;
+        }
+        .section-title h2 {
+          font-size: 30px;
+        }
+      }
+    </style>
+  </head>
+
+  <body>
+    <!-- NAVBAR -->
+    <nav class="navbar navbar-expand-lg fixed-top">
+      <div class="container">
+        <a class="navbar-brand" href="#">Satya<span> maurya.</span></a>
+
+        <button
+          class="navbar-toggler"
+          type="button"
+          data-bs-toggle="collapse"
+          data-bs-target="#menu"
+        >
+          <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="menu">
+          <ul class="navbar-nav ms-auto">
+            <li class="nav-item"><a class="nav-link" href="#home">Home</a></li>
+            <li class="nav-item">
+              <a class="nav-link" href="#about">About</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#skills">Skills</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#projects">Projects</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#contact">Contact</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+
+    <!-- HERO -->
+    <section class="hero" id="home">
+      <div class="container">
+        <div class="row align-items-center">
+          <div class="col-lg-7">
+            <h5 class="gradient-text mb-3">HELLO, I'M A DEVELOPER</h5>
+
+            <h1>
+              Satyaprakash Maurya<br />
+              <span class="gradient-text">React & Flutter Developer</span>
+            </h1>
+
+            <p>
+              I am a passionate developer focused on building modern, responsive
+              websites and beautiful mobile applications using React JS and
+              Flutter. I love learning new technologies and creating digital
+              experiences.
+            </p>
+
+            <a href="#projects" class="btn-main me-2">View Projects</a>
+            <a href="#contact" class="btn-outline">Hire Me</a>
+
+            <div class="social-links mt-4">
+              <a href="https://github.com/" target="_blank"
+                ><i class="bi bi-github"></i
+              ></a>
+              <a href="https://linkedin.com/" target="_blank"
+                ><i class="bi bi-linkedin"></i
+              ></a>
+              <a href="https://instagram.com/" target="_blank"
+                ><i class="bi bi-instagram"></i
+              ></a>
+            </div>
+          </div>
+
+          <div class="col-lg-5 text-center">
+            <div class="profile-circle">
+              <!-- <h2>PK</h2> -->
+              <img src="beeru.png" alt="img" / class="img-fluid">
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ABOUT -->
+    <section id="about">
+      <div class="container">
+        <div class="section-title">
+          <h2>About <span>Me</span></h2>
+          <p>Get to know me better</p>
+        </div>
+
+        <div class="row justify-content-center">
+          <div class="col-lg-9">
+            <div class="about-box text-center">
+              <h3 class="mb-3">Building Ideas Into Reality</h3>
+              <p>
+                My name is Prince Kushwaha. I have completed my BCA and I am
+                passionate about software development. My main focus is Flutter
+                app development and React JS frontend development. I enjoy
+                creating user-friendly interfaces, learning programming and
+                solving problems.
+              </p>
+              <p>
+                My goal is to become a professional software developer and build
+                applications that make people's lives easier.
+              </p>
+              <a href="#contact" class="btn-main">Let's Connect</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SKILLS -->
+    <section id="skills">
+      <div class="container">
+        <div class="section-title">
+          <h2>My <span>Skills</span></h2>
+          <p>Technologies I work with</p>
+        </div>
+
+        <div class="row g-4">
+          <div class="col-md-4 col-6">
+            <div class="skill-card">
+              <i class="bi bi-phone"></i>
+              <h5>Flutter</h5>
+              <p>Cross-platform mobile app development.</p>
+              <div class="progress">
+                <div class="progress-bar" style="width: 60%"></div>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-md-4 col-6">
+            <div class="skill-card">
+              <i class="bi bi-filetype-jsx"></i>
+              <h5>React JS</h5>
+              <p>Modern component-based frontend development.</p>
+              <div class="progress">
+                <div class="progress-bar" style="width: 55%"></div>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-md-4 col-6">
+            <div class="skill-card">
+              <i class="bi bi-code-slash"></i>
+              <h5>JavaScript</h5>
+              <p>Interactive web applications and logic.</p>
+              <div class="progress">
+                <div class="progress-bar" style="width: 60%"></div>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-md-4 col-6">
+            <div class="skill-card">
+              <i class="bi bi-filetype-html"></i>
+              <h5>HTML & CSS</h5>
+              <p>Modern web layouts and responsive designs.</p>
+              <div class="progress">
+                <div class="progress-bar" style="width: 85%"></div>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-md-4 col-6">
+            <div class="skill-card">
+              <i class="bi bi-bootstrap"></i>
+              <h5>Bootstrap</h5>
+              <p>Responsive UI development.</p>
+              <div class="progress">
+                <div class="progress-bar" style="width: 75%"></div>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-md-4 col-6">
+            <div class="skill-card">
+              <i class="bi bi-database"></i>
+              <h5>SQL</h5>
+              <p>Database fundamentals and queries.</p>
+              <div class="progress">
+                <div class="progress-bar" style="width: 50%"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- PROJECTS -->
+    <section id="projects">
+      <div class="container">
+        <div class="section-title">
+          <h2>My <span>Projects</span></h2>
+          <p>Some of my development work</p>
+        </div>
+
+        <div class="row g-4">
+          <div class="col-md-4">
+            <div class="project-card">
+              <img
+                src="https://placehold.co/600x350/18243c/00d4ff?text=Portfolio+Website"
+                alt="Portfolio project"
+              />
+              <h5>Personal Portfolio</h5>
+              <p>A professional and responsive personal portfolio website.</p>
+              <span class="tag">HTML</span>
+              <span class="tag">CSS</span>
+              <span class="tag">Bootstrap</span>
+              <div class="mt-3">
+                <a href="#" class="btn-outline">Live Demo</a>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-md-4">
+            <div class="project-card">
+              <img
+                src="https://placehold.co/600x350/18243c/00d4ff?text=React+App"
+                alt="React project"
+              />
+              <h5>React Web Application</h5>
+              <p>A modern web application with reusable React components.</p>
+              <span class="tag">React JS</span>
+              <span class="tag">JavaScript</span>
+              <span class="tag">CSS</span>
+              <div class="mt-3">
+                <a href="#" class="btn-outline">Live Demo</a>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-md-4">
+            <div class="project-card">
+              <img
+                src="https://placehold.co/600x350/18243c/00d4ff?text=Flutter+App"
+                alt="Flutter project"
+              />
+              <h5>Flutter Mobile App</h5>
+              <p>A cross-platform mobile application with modern UI.</p>
+              <span class="tag">Flutter</span>
+              <span class="tag">Dart</span>
+              <span class="tag">Material UI</span>
+              <div class="mt-3">
+                <a href="#" class="btn-outline">View Project</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- CONTACT -->
+    <section id="contact">
+      <div class="container">
+        <div class="section-title">
+          <h2>Contact <span>Me</span></h2>
+          <p>Let's work together on something amazing</p>
+        </div>
+
+        <div class="row g-4">
+          <div class="col-lg-5">
+            <div class="contact-box">
+              <h4>Let's Talk</h4>
+              <p style="color: #a6b0c3">
+                Have a project or job opportunity? Feel free to contact me.
+              </p>
+
+              <div class="contact-info">
+                <i class="bi bi-envelope"></i>
+                <div>
+                  <h6>Email</h6>
+                  <p>satyamauryawk@gmail.com</p>
+                </div>
+              </div>
+
+              <div class="contact-info">
+                <i class="bi bi-telephone"></i>
+                <div>
+                  <h6>Phone</h6>
+                  <p>+91 8795186486</p>
+                </div>
+              </div>
+
+              <div class="contact-info">
+                <i class="bi bi-geo-alt"></i>
+                <div>
+                  <h6>Location</h6>
+                  <p>Uttar Pradesh, India</p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-lg-7">
+            <div class="contact-box">
+              <h4 class="mb-4">Send Me a Message</h4>
+
+              <form
+                action="https://formsubmit.co/YOUR_EMAIL@gmail.com"
+                method="POST"
+              >
+                <input
+                  type="hidden"
+                  name="_subject"
+                  value="New Portfolio Contact Message"
+                />
+
+                <input type="hidden" name="_template" value="table" />
+
+                <input type="hidden" name="_captcha" value="false" />
+
+                <input
+                  type="text"
+                  name="name"
+                  class="form-control"
+                  placeholder="Your Name"
+                  required
+                />
+
+                <input
+                  type="email"
+                  name="email"
+                  class="form-control"
+                  placeholder="Your Email"
+                  required
+                />
+
+                <input
+                  type="text"
+                  name="subject"
+                  class="form-control"
+                  placeholder="Subject"
+                  required
+                />
+
+                <textarea
+                  name="message"
+                  class="form-control"
+                  rows="5"
+                  placeholder="Write your message..."
+                  required
+                ></textarea>
+
+                <button type="submit" class="btn-main w-100">
+                  Send Message <i class="bi bi-send"></i>
+                </button>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer>
+      <div class="container">
+        <p class="mb-1">
+          © <span id="year"></span> satya maurya. All Rights Reserved.
+        </p>
+        <small>Designed & Developed with ❤️</small>
+      </div>
+    </footer>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+
+    <script>
+      // Dynamic year
+      document.getElementById("year").textContent = new Date().getFullYear();
+
+      // Close mobile menu after clicking a link
+      document.querySelectorAll(".nav-link").forEach((link) => {
+        link.addEventListener("click", () => {
+          const menu = document.getElementById("menu");
+          const bsCollapse = bootstrap.Collapse.getInstance(menu);
+
+          if (bsCollapse) {
+            bsCollapse.hide();
+          }
+        });
+      });
+    </script>
+  </body>
+</html>
